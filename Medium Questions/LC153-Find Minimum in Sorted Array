@@ -1,1 +1,20 @@
 
+class Solution {
+    public int findMin(int[] nums) {
+        int N = nums.length;
+        if (nums[N -1] > nums[0]) return nums[0];// we check if first element is less than last element which means that the array is already sorted and NOT rotated
+        int L = 0, R = N - 1;
+
+        while (L + 1 < R) {
+            int mid = L + (R - L) / 2;
+            if (nums[mid] > nums[R]) {
+                L = mid;
+            } else if (nums[mid] < nums[R]) {
+                R = mid;
+            }
+        }
+        // one of the two pointers should be smallest
+        return Math.min(nums[L],nums[R]);
+        
+    }
+}
