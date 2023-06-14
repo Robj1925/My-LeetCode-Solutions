@@ -1,0 +1,24 @@
+class Solution {
+    public int findMin(int[] nums) {
+        int N = nums.length;
+        if (nums[0] < nums[N - 1]) {
+return nums[0];
+        }
+
+        int L = 0, R = N - 1;
+
+        while (L + 1 < R) {
+            int mid = L + (R - L) / 2;
+            if (nums[mid]  > nums[R]) {
+                L += 1;
+            } else {
+                R -=1;
+            }
+        }
+        return Math.min(nums[L],nums[R]);
+        
+    }
+}
+
+// the dupilicates make it so we have to increment by 1 instead of halving it because we have to check each element which basically makes the binary
+// search useless because it makes it O(N);
